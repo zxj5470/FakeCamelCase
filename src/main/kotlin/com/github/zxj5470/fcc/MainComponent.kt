@@ -1,6 +1,10 @@
 package com.github.zxj5470.fcc
 
-import com.github.zxj5470.fcc.utils.countTimes
+/**
+ * @author:zxj5470
+ *
+ * @thanks_to:vkurdin/idea-php-lambda-folding
+ */
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.components.ApplicationComponent
@@ -17,14 +21,37 @@ class MainComponent: ApplicationComponent {
     fun todo(event: AnActionEvent) {
         editor = event.getData(PlatformDataKeys.EDITOR) ?: return
         document = editor.document
-        val t=document.text.countTimes("\\.[A-Z]")
-        println(document.text)
-        println(t)
+        val returnList=document.text.findIndexes()
+
+        returnList.forEach(System.out::println)
+    }
+
+    private fun String.findIndexes():List<Int>{
+        val str=this
+        val list=ArrayList<Int>()
+        var flag=false;
+        str.forEachIndexed { index, c ->
+                when{
+                    c=='.'->{
+                        flag=true
+                    }
+                    c.isUpperCase()-> {
+                        if(flag){
+                            list.add(index)
+                            flag=false
+                        }
+                    }
+                    else-> {
+                        flag=false
+                    }
+                }
+        }
+        return list
     }
 
 
     override fun getComponentName(): String {
-        return "Fake Camel Case"
+        return "FakeCamelCase"
     }
 
     override fun disposeComponent() {

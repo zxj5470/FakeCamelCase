@@ -16,7 +16,7 @@
   </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="2016.2"/>
+  <idea-version since-build="IC-162.1121.32"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
@@ -24,16 +24,21 @@
   <depends>com.intellij.modules.lang</depends>
   -->
 
-  <extensions defaultExtensionNs="com.intellij.modules.rider">
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <lang.foldingBuilder language="PHP" implementationClass=""/>
   </extensions>
 
   <actions>
-
     <action id="fcc.ToFaker" class="com.github.zxj5470.fcc.MainAction" text="Fake Camel Case"
             description="to Fake Camel Case">
-      <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
       <keyboard-shortcut keymap="$default" first-keystroke="alt J" second-keystroke="alt V"/>
     </action>
   </actions>
-
+  <application-components>
+    <component>
+      <implementation-class>com.github.zxj5470.fcc.MainComponent</implementation-class>
+    </component>
+  </application-components>
 </idea-plugin>
