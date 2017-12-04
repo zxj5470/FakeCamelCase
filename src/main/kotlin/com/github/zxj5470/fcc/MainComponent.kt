@@ -12,6 +12,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.components.ApplicationComponent
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.Editor
+import com.jetbrains.rider.ideaInterop.fileTypes.csharp.CSharpFileTypeFactory
 
 class MainComponent: ApplicationComponent {
 
