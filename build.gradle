@@ -68,5 +68,6 @@ allprojects {
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 //        testCompile group: 'junit', name: 'junit', version: '4.11'
+//        compile files("libs/rider.jar")
     }
 }

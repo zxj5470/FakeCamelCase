@@ -3,16 +3,26 @@ package com.github.zxj5470.fcc.utils
 /**
  * @author:zxj5470
  */
-fun String.countTimes(regex: String): Int {
-    var count = 0
-    var temp = -1
-    var b: Int
-    this.forEachIndexed { index, _ ->
-        b = this.indexOf(regex, index)
-        if (b > temp) {
-            temp = b
-            count++
+
+fun String.findIndexes():List<Int>{
+    val str=this
+    val list=ArrayList<Int>()
+    var flag=false;
+    str.forEachIndexed { index, c ->
+        when{
+            c=='.'->{
+                flag=true
+            }
+            c.isUpperCase()-> {
+                if(flag){
+                    list.add(index)
+                    flag=false
+                }
+            }
+            else-> {
+                flag=false
+            }
         }
     }
-    return count
+    return list
 }

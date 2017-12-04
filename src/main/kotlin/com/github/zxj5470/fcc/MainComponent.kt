@@ -5,6 +5,8 @@ package com.github.zxj5470.fcc
  *
  * @thanks_to:vkurdin/idea-php-lambda-folding
  */
+import com.github.zxj5470.fcc.utils.findIndexes
+import com.intellij.lang.folding.FoldingBuilderEx
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.components.ApplicationComponent
@@ -21,33 +23,11 @@ class MainComponent: ApplicationComponent {
     fun todo(event: AnActionEvent) {
         editor = event.getData(PlatformDataKeys.EDITOR) ?: return
         document = editor.document
-        val returnList=document.text.findIndexes()
-
-        returnList.forEach(System.out::println)
+        val psi=event.getData(PlatformDataKeys.PSI_FILE)?:return
+        FakeCamelBuilder().buildFoldRegions(psi,document,true)
     }
 
-    private fun String.findIndexes():List<Int>{
-        val str=this
-        val list=ArrayList<Int>()
-        var flag=false;
-        str.forEachIndexed { index, c ->
-                when{
-                    c=='.'->{
-                        flag=true
-                    }
-                    c.isUpperCase()-> {
-                        if(flag){
-                            list.add(index)
-                            flag=false
-                        }
-                    }
-                    else-> {
-                        flag=false
-                    }
-                }
-        }
-        return list
-    }
+
 
 
     override fun getComponentName(): String {
