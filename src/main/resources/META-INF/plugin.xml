@@ -1,6 +1,6 @@
 <idea-plugin>
   <id>com.github.zxj5470.fcc</id>
-  <name>Plugin display name here</name>
+  <name>fakeCamelCaseForC#</name>
   <version>1.0</version>
   <vendor email="zxj5470@foxmail.com" url="http://zxj5470.github.com">YourCompany</vendor>
 
@@ -24,9 +24,8 @@
   <depends>com.intellij.modules.lang</depends>
   -->
   <depends>com.intellij.modules.rider</depends>
-
   <extensions defaultExtensionNs="com.intellij">
-    <lang.foldingBuilder language=""
+    <lang.foldingBuilder language="TEXT"
      implementationClass="com.github.zxj5470.fcc.FakeCamelBuilder"
     />
   </extensions>
@@ -34,7 +33,7 @@
   <actions>
     <action id="fcc.ToFaker" class="com.github.zxj5470.fcc.MainAction" text="Fake Camel Case"
             description="to Fake Camel Case">
-      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
     </action>
   </actions>
   <application-components>

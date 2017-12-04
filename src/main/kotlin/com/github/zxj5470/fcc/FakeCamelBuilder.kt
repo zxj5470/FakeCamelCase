@@ -14,13 +14,15 @@ class FakeCamelBuilder : FoldingBuilderEx(), DumbAware {
         val ret = ArrayList<FoldingDescriptor>()
         val content = root.text
         val indices = content.findIndexes()
-        println(root.language.javaClass)
+//        println(root.language.javaClass) //to print the type `class com.intellij.openapi.fileTypes.PlainTextLanguage`
         indices.forEach {
             val end = it + 1
             val s = content.subSequence(it, end).toString().toLowerCase()
             ret.add(getFold(root, TextRange.from(it, 1), s))
         }
+//        count how many function matched...
         println(ret.size)
+
         return ret.toTypedArray()
     }
 
