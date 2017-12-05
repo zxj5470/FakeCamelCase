@@ -9,4 +9,4 @@
 > Now it works !
 > Because I crate a fake `C# File` class for `plugin.xml` 
 
-![pic2](images/pic3.jpg)
+![pic2](images/pic3.png)
